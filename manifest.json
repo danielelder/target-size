@@ -1,0 +1,12 @@
+{
+    "name": "Target size",
+    "version": "1.0.0",
+    "description": "Measure the target size for 24px",
+    "manifest_version": 3,
+    "author": "Dan Elder",
+    "background" : {
+        "service_worker" : "scripts/background.js"
+    },
+    "permissions": ["activeTab", "scripting"],
+    "action": {}
+}
