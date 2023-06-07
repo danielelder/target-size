@@ -1,15 +1,23 @@
-var targetBox = document.createElement('div');
-targetBox.id = 'targetBox';
-targetBox.style.cssText = 'width:22px;height:22px;border:1px dashed red;position:fixed;transition: transform 0.23s;pointer-events: none;';
-document.body.appendChild(targetBox);
+if (!document.getElementById('targetBox')) {
+    var targetBox = document.createElement('div');
+    targetBox.id = 'targetBox';
+    targetBox.style.cssText = 'width:22px;height:22px;border:1px solid red;border-radius:50%;background:rgba(255,0,0,0.1);position:fixed;transition:transform 0.23s;pointer-events:none;z-index:999999;';
+    document.body.appendChild(targetBox);
 
-var sizeText = document.createElement('div');
-sizeText.id = 'sizeText';
-sizeText.style.cssText = 'font-size:10px;top:-18px;position:relative;';
-sizeText.innerText = '24px';
-targetBox.appendChild(sizeText);
+    function targetBoxCursorMove(e) {
+        document.getElementById('targetBox').style.top = (e.clientY - 10) + 'px';
+        document.getElementById('targetBox').style.left = (e.clientX - 10) + 'px';
+    }
 
-document.addEventListener('mousemove', function(e){
-    document.getElementById('targetBox').style.top = (e.clientY - 3) + 'px';
-    document.getElementById('targetBox').style.left = (e.clientX + 10) + 'px';
-});
+    document.addEventListener('mousemove', targetBoxCursorMove);
+
+    var style = document.createElement('style');
+    style.id = 'targetStyles';
+    style.appendChild(document.createTextNode('a, button {outline:1px dashed gray!important;outline-offset:-1px!important}'));
+    document.head.appendChild(style);
+}
+else {
+    document.getElementById('targetBox').remove();
+    document.getElementById('targetStyles').remove();
+    document.removeEventListener('mousemove', targetBoxCursorMove);
+}

@@ -1,0 +1,20 @@
+{
+  "name": "target-size",
+  "version": "1.0.0",
+  "description": "Adds a 24px circle under the cursor and outlines basic interactive elements on a page",
+  "scripts": {
+    "bookmarklet": "uglifyjs --compress --mangle --output scripts/bookmarklet.js -- scripts/targetSize.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielelder/target-size.git"
+  },
+  "author": "Dan Elder",
+  "bugs": {
+    "url": "https://github.com/danielelder/target-size/issues"
+  },
+  "homepage": "https://github.com/danielelder/target-size#readme",
+  "dependencies": {
+    "uglify-js": "^3.17.4"
+  }
+}
